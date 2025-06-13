@@ -55,7 +55,7 @@ df['T_n'] = df['a_n'].cumsum() + 1  # include the center seed
 
 fig2 = plt.figure(figsize=(10, 5))
 sns.barplot(x='Stage', y='a_n', data=df, color='skyblue')
-plt.title("Sigma Notation as Accumulated Growth: $T_n = 1 + \sum_{k=1}^{n-1} 6k$", fontsize=14)
+plt.title("Sigma Notation as Accumulated Growth: $T_n = 1 + \\sum_{k=1}^{n-1} 6k$", fontsize=14)
 plt.xlabel("Stage (n)")
 plt.ylabel("Hexagons Added ($a_n$)")
 st.pyplot(fig2)
