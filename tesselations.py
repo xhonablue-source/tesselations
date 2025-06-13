@@ -55,10 +55,18 @@ df['T_n'] = df['a_n'].cumsum() + 1  # include the center seed
 
 fig2 = plt.figure(figsize=(10, 5))
 sns.barplot(x='Stage', y='a_n', data=df, color='skyblue')
-plt.title("Sigma Notation as Accumulated Growth: $T_n = 1 + \sum_{k=1}^{n-1} 6k$", fontsize=14)
+plt.title("Sigma Notation as Accumulated Growth: $T_n = 1 + \\sum_{k=1}^{n-1} 6k$", fontsize=14)
 plt.xlabel("Stage (n)")
 plt.ylabel("Hexagons Added ($a_n$)")
 st.pyplot(fig2)
+
+st.markdown("""
+**Why 6?** Each new ring of hexagons wraps around the prior shape using the six edges of each hexagon, so 6 hexagons are added per ring.
+
+**What is $k$?** It represents the ring number (or distance from the center).
+
+**What does $T_n = 1 + \sum_{k=1}^{n-1} 6k$ mean?** You start with 1 central hexagon and then add 6 hexagons per ring ($k$), summed over all rings leading up to stage $n$.
+""")
 
 # -- SECTION 3: Triangle Tree Tessellation --
 st.header("🌲 Triangle Tree Tessellation & Sequence Tutorial")
@@ -82,6 +90,12 @@ plt.ylabel("Total Triangles ($B_n$)")
 plt.grid(True)
 st.pyplot(fig3)
 
+st.markdown("""
+**Why 3?** Each triangle splits outward from a vertex, forming branches in threes.
+
+**What is the summation?** The total number of triangles is built by summing $b_n = 3(n-1)$ over prior stages, forming a quadratic growth: $B_n = 1 + 3\cdot\frac{(n-1)n}{2}$.
+""")
+
 # -- SECTION 4: Interactive Sequence Calculators --
 st.header("🧮 Interactive Sequence Calculators")
 
@@ -89,15 +103,15 @@ st.subheader("🔷 Hexagon Sequence Calculator")
 hex_stage = st.slider("Choose stage for hexagon tessellation:", 1, 25, 5)
 hex_an = 6 * (hex_stage - 1)
 hex_Tn = 1 + 3 * hex_stage * (hex_stage - 1)
-st.latex(f"a_{{{hex_stage}}} = {hex_an}")
-st.latex(f"T_{{{hex_stage}}} = 1 + 3({hex_stage})({hex_stage - 1}) = {hex_Tn}")
+st.latex(f"\\text{New hexagons added: } a_{{{hex_stage}}} = {hex_an}")
+st.latex(f"\\text{Total hexagons: } T_{{{hex_stage}}} = 1 + 3({hex_stage})({hex_stage - 1}) = {hex_Tn}")
 
 st.subheader("🔺 Triangle Tree Calculator")
 tri_stage = st.slider("Choose stage for triangle tessellation:", 1, 25, 5)
 tri_bn = 3 * (tri_stage - 1)
 tri_Bn = 1 + 3 * (tri_stage - 1) * tri_stage // 2
-st.latex(f"b_{{{tri_stage}}} = {tri_bn}")
-st.latex(f"B_{{{tri_stage}}} = 1 + 3 * (n-1)n/2 = {tri_Bn}")
+st.latex(f"\\text{New triangles added: } b_{{{tri_stage}}} = {tri_bn}")
+st.latex(f"\\text{Total triangles: } B_{{{tri_stage}}} = 1 + 3 * (n-1)n/2 = {tri_Bn}")
 
 st.markdown("""
 **Key Terms:**  
