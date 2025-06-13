@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import pandas as pd
-import sympy as sp
 from matplotlib.patches import RegularPolygon
 
 # -- Streamlit Page Setup --
