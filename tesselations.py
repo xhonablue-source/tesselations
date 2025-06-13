@@ -20,7 +20,7 @@ fig, axes = plt.subplots(1, 5, figsize=(20, 4))
 
 for i, ax in enumerate(axes):
     stage = i + 1
-    ax.set_title(f"Stage {stage}\n$a_{stage} = {a_n[i]}")
+    ax.set_title(f"Stage {stage}\n" + r"$a_{{{}}} = {}$".format(stage, a_n[i]))
     ax.set_xlim(-5, 5)
     ax.set_ylim(-5, 5)
     ax.set_aspect('equal')
@@ -49,13 +49,13 @@ plt.tight_layout(rect=[0, 0, 1, 0.95])
 st.pyplot(fig)
 
 # -- SECTION 2: Sigma Notation Growth --
-st.header("2️⃣ Understanding $\\Sigma$ as Accumulated Growth")
+st.header("2️⃣ Understanding $\Sigma$ as Accumulated Growth")
 df = pd.DataFrame({'Stage': stages, 'a_n': a_n})
 df['T_n'] = df['a_n'].cumsum() + 1  # include the center seed
 
 fig2 = plt.figure(figsize=(10, 5))
 sns.barplot(x='Stage', y='a_n', data=df, color='skyblue')
-plt.title("Sigma Notation as Accumulated Growth: $T_n = 1 + \\sum_{k=1}^{n-1} 6k$", fontsize=14)
+plt.title("Sigma Notation as Accumulated Growth: $T_n = 1 + \sum_{k=1}^{n-1} 6k$", fontsize=14)
 plt.xlabel("Stage (n)")
 plt.ylabel("Hexagons Added ($a_n$)")
 st.pyplot(fig2)
