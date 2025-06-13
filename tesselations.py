@@ -1,10 +1,11 @@
-# Tessellation MathCraft: Seed Growth and Sequences (Streamlit-ready)
+# Tessellation MathCraft: Seed Growth and Sequences (Enhanced Streamlit App)
 
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import pandas as pd
+import sympy as sp
 from matplotlib.patches import RegularPolygon
 
 # -- Streamlit Page Setup --
@@ -82,12 +83,31 @@ plt.ylabel("Total Triangles ($B_n$)")
 plt.grid(True)
 st.pyplot(fig3)
 
+# -- SECTION 4: Interactive Sequence Calculators --
+st.header("🧮 Interactive Sequence Calculators")
+
+st.subheader("🔷 Hexagon Sequence Calculator")
+hex_stage = st.slider("Choose stage for hexagon tessellation:", 1, 25, 5)
+hex_an = 6 * (hex_stage - 1)
+hex_Tn = 1 + 3 * hex_stage * (hex_stage - 1)
+st.latex(f"a_{{{hex_stage}}} = {hex_an}")
+st.latex(f"T_{{{hex_stage}}} = 1 + 3({hex_stage})({hex_stage - 1}) = {hex_Tn}")
+
+st.subheader("🔺 Triangle Tree Calculator")
+tri_stage = st.slider("Choose stage for triangle tessellation:", 1, 25, 5)
+tri_bn = 3 * (tri_stage - 1)
+tri_Bn = 1 + 3 * (tri_stage - 1) * tri_stage // 2
+st.latex(f"b_{{{tri_stage}}} = {tri_bn}")
+st.latex(f"B_{{{tri_stage}}} = 1 + 3 * (n-1)n/2 = {tri_Bn}")
+
 st.markdown("""
 **Key Terms:**  
-- $n$: The growth stage (starts at 1, includes the seed)
-- $k$: The ring or level around the seed (used in sigma notation)
-- $a_n$: Hexagons added at stage $n$
-- $T_n$: Total number of hexagons at stage $n$
+- $n$: The growth stage (starts at 1, includes the seed)  
+- $k$: The ring or level around the seed (used in sigma notation)  
+- $a_n$: Hexagons added at stage $n$  
+- $T_n$: Total number of hexagons at stage $n$  
+- $b_n$: Triangles added at stage $n$  
+- $B_n$: Total number of triangles at stage $n$
 
-**Challenge**: Can you create a recursive formula for the triangle tessellation?
+**Challenge:** Can you create a custom tessellation rule and sequence?
 """)
