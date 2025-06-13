@@ -103,15 +103,15 @@ st.subheader("🔷 Hexagon Sequence Calculator")
 hex_stage = st.slider("Choose stage for hexagon tessellation:", 1, 25, 5)
 hex_an = 6 * (hex_stage - 1)
 hex_Tn = 1 + 3 * hex_stage * (hex_stage - 1)
-st.latex(f"\\text{New hexagons added: } a_{{{hex_stage}}} = {hex_an}")
-st.latex(f"\\text{Total hexagons: } T_{{{hex_stage}}} = 1 + 3({hex_stage})({hex_stage - 1}) = {hex_Tn}")
+st.latex(f"\\text{{New hexagons added: }} a_{{{hex_stage}}} = {hex_an}")
+st.latex(f"\\text{{Total hexagons: }} T_{{{hex_stage}}} = 1 + 3({hex_stage})({hex_stage - 1}) = {hex_Tn}")
 
 st.subheader("🔺 Triangle Tree Calculator")
 tri_stage = st.slider("Choose stage for triangle tessellation:", 1, 25, 5)
 tri_bn = 3 * (tri_stage - 1)
 tri_Bn = 1 + 3 * (tri_stage - 1) * tri_stage // 2
-st.latex(f"\\text{New triangles added: } b_{{{tri_stage}}} = {tri_bn}")
-st.latex(f"\\text{Total triangles: } B_{{{tri_stage}}} = 1 + 3 * (n-1)n/2 = {tri_Bn}")
+st.latex(f"\\text{{New triangles added: }} b_{{{tri_stage}}} = {tri_bn}")
+st.latex(f"\\text{{Total triangles: }} B_{{{tri_stage}}} = 1 + 3 \\cdot (n-1)n/2 = {tri_Bn}")
 
 st.markdown("""
 **Key Terms:**  
